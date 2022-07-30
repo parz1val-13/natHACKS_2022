@@ -80,7 +80,7 @@ class Board(BoardShim):
         ), "Error: Undefined combination of arguments passed to 'get_board_id'"
 
         # Get com port for EEG device - not required for unicorn, or muse boards on a mac
-        use_serial_port = [0,1,2,22,21,30]
+        use_serial_port = [0,1,2,22,21,30,42]
         if self.board_id in use_serial_port:
             self.params.serial_port = (
                 serial_port if serial_port is not None else get_serial_port(self.board_id)
@@ -190,7 +190,7 @@ def get_board_id(data_type, hardware, model):
         elif hardware == MUSE:
             if model == MUSE_2:
                 if platform.system() == "Windows":
-                    board_id = 22
+                    board_id = 41
                 else:
                     board_id = 38
             elif model == MUSE_S:
